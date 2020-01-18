@@ -16,12 +16,13 @@ spec:
         app: client
     spec:
       containers:
-      - image: mmorejon/erase-una-vez-2:latest
-        name: client
-        command:
-          - client
-        env:
-          - name: SERVER_URL
-            value: http://server:8000
-          - name: ENDPOINT
-            value: /echo
+        - image: mmorejon/erase-una-vez-2:latest
+          name: client
+          imagePullPolicy: Always
+          command:
+            - client
+          env:
+            - name: SERVER_URL
+              value: http://server:8000
+            - name: ENDPOINT
+              value: /echo
