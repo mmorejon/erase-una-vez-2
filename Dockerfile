@@ -25,5 +25,5 @@ COPY --from=builder /go/bin/server /usr/local/bin/server
 COPY --from=builder /go/bin/client /usr/local/bin/client
 # use an unprivileged user.
 USER elf
-# run app
+# run server by default
 ENTRYPOINT ["server"]
