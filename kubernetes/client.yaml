@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: client
+  name: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - image: mmorejon/erase-una-vez-2
+        name: client
+        command:
+          - client
+        env:
+          - name: SERVER_URL
+            value: http://server:8000
+          - name: ENDPOINT
+            value: /echo

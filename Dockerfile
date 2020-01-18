@@ -11,7 +11,8 @@ RUN go mod verify
 # copy the source code as the last step
 COPY . .
 # build the binary
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o /go/bin/erase-una-vez-2 .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o /go/bin/server ./cmd/server
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o /go/bin/client ./cmd/client
 
 # build a small image
 FROM alpine:3.11.2
@@ -20,8 +21,9 @@ LABEL language="golang"
 # import the user and group files from the builder.
 COPY --from=builder /etc/passwd /etc/passwd
 # copy the static executable
-COPY --from=builder /go/bin/erase-una-vez-2 /go/bin/erase-una-vez-2
+COPY --from=builder /go/bin/server /usr/local/bin/server
+COPY --from=builder /go/bin/client /usr/local/bin/client
 # use an unprivileged user.
 USER elf
 # run app
-ENTRYPOINT ["/go/bin/erase-una-vez-2"]%
+ENTRYPOINT ["server"]
