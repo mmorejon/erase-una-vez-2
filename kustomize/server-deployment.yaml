@@ -15,7 +15,7 @@ spec:
         app: server
     spec:
       containers:
-      - image: mmorejon/erase-una-vez-2
+      - image: mmorejon/erase-una-vez-2:latest
         name: server
         command:
           - server
