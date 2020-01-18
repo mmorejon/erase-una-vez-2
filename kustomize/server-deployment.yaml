@@ -19,17 +19,3 @@ spec:
         name: server
         command:
           - server
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: server
-  labels:
-    app: server
-spec:
-  ports:
-  - port: 8000
-    protocol: TCP
-    targetPort: 8000
-  selector:
-    app: server

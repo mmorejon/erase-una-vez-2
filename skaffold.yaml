@@ -7,7 +7,7 @@ build:
 deploy:
   kubectl:
     manifests:
-      - ./kubernetes/*
+      - ./kustomize/*
 portForward:
   - resourceType: deployment
     resourceName: server
