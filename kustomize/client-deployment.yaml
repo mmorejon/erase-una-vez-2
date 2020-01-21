@@ -16,9 +16,8 @@ spec:
         app: client
     spec:
       containers:
-        - image: mmorejon/erase-una-vez-2:latest
+        - image: mmorejon/erase-una-vez-2:0.1.0
           name: client
-          imagePullPolicy: Always
           command:
             - client
           env:

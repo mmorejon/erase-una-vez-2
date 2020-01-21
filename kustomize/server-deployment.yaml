@@ -15,8 +15,7 @@ spec:
         app: server
     spec:
       containers:
-        - image: mmorejon/erase-una-vez-2:latest
+        - image: mmorejon/erase-una-vez-2:0.1.0
           name: server
-          imagePullPolicy: Always
           command:
             - server
