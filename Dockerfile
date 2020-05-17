@@ -15,7 +15,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o 
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o /go/bin/client ./cmd/client
 
 # build a small image
-FROM alpine:3.11.2
+FROM alpine:3.11.6
 LABEL description="Aplicación de ejemplo para el libro Érase una vez Kubernetes."
 LABEL language="golang"
 # import the user and group files from the builder.

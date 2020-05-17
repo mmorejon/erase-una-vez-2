@@ -5,14 +5,13 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"strconv"
 	"time"
 
 	"github.com/mmorejon/erase-una-vez-2/pkg/client"
 )
 
 var (
-	sleepTime int    = 1
+	sleepTime string = "1s"
 	serverURL string = "http://localhost:8000"
 )
 
@@ -20,7 +19,7 @@ func main() {
 	client := client.SetupClient()
 
 	if len(os.Getenv("SLEEP_TIME")) != 0 {
-		sleepTime, _ = strconv.Atoi(os.Getenv("SLEEP_TIME"))
+		sleepTime = os.Getenv("SLEEP_TIME")
 	}
 
 	if len(os.Getenv("SERVER_URL")) != 0 {
@@ -47,6 +46,7 @@ func main() {
 		fmt.Printf("%s\n", body)
 
 		// Sleep
-		time.Sleep(time.Duration(sleepTime) * time.Second)
+		sleepTimeDuration, _ := time.ParseDuration(sleepTime)
+		time.Sleep(sleepTimeDuration)
 	}
 }
