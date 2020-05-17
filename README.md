@@ -17,19 +17,19 @@ Utilice el comando `server` para iniciar el sistema como servidor web. La aplica
 
 Todos los puntos de acceso muestran la información en formato JSON.
 
-|Variable de entorno|Descripción|
-|-----|-----------|
-|`CHARACTER`| Modifica el mensaje de respuesta del servidor.|
+|Variable de entorno|Descripción|Valor por defecto|
+|-----|-----------|------|
+|`CHARACTER`| Modifica el mensaje de respuesta del servidor.| `...` |
 
 ### Características del cliente
 
 Utilice el comando `client` para iniciar el sistema como cliente web. La aplicación realiza peticiones hacia el enlace configurado por intervalos de tiempo. Para configurar la aplicación cliente utilice las siguientes variables de entorno:
 
-|Variable de entorno|Descripción|
-|-----|-----------|
-|`SLEEP_TIME`| Intervalo de tiempo entre peticiones. El valor es un número.|
-|`SERVER_URL`| Dirección web donde serán realizadas las peticiones. Ejemplo: `http://ejemplo.com`.|
-|`ENDPOINT`| Punto de acceso del servidor web.|
+|Variable de entorno|Descripción|Valor por defecto|
+|-----|-----------|------|
+|`SLEEP_TIME`| Intervalo de tiempo entre peticiones. Es una cadena. | `1s` |
+|`SERVER_URL`| Dirección web donde serán realizadas las peticiones. Ejemplo: `http://ejemplo.com`.| "" |
+|`ENDPOINT`| Punto de acceso del servidor web.| "" |
 
 ## Funcionamiento en una máquina
 
@@ -40,7 +40,7 @@ docker container run --rm \
   --entrypoint server \
   -p 8000:8000 \
   --detach \
-  mmorejon/erase-una-vez-2:0.1.0
+  mmorejon/erase-una-vez-2:0.2.0
 
 2020/01/20 23:02:24 Servidor iniciado
 ```
@@ -78,7 +78,7 @@ docker container run --rm \
   --detach \
   --env SERVER_URL="http://172.17.0.2:8000" \
   --env ENDPOINT="/echo" \
-  mmorejon/erase-una-vez-2:0.1.0
+  mmorejon/erase-una-vez-2:0.2.0
 ```
 
 ```bash
@@ -97,7 +97,7 @@ docker container logs client
 ## Funcionamiento en un cluster de Kubernetes
 
 ```bash
-kubectl apply -f kustomize/
+kubectl apply -f kubernetes/
 
 deployment.apps/client created
 deployment.apps/server created
