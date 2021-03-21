@@ -14,9 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Unshallow
-        run: git fetch --prune --unshallow
-
       - name: Download release notes utility
         env:
           GH_REL_URL: https://github.com/buchanae/github-release-notes/releases/download/0.2.0/github-release-notes-linux-amd64-0.2.0.tar.gz
@@ -27,18 +24,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo 'CHANGELOG' > /tmp/release.txt
-          github-release-notes -org mmorejon -repo erase-una-vez-2 -since-latest-release >> /tmp/release.txt
+          github-release-notes -org mmorejon -repo erase-una-vez-1 -since-latest-release >> /tmp/release.txt
 
       - name: Create release
-        id: create_release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          draft: false
-          prerelease: false
+          bodyFile: "/tmp/release.txt"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     name: Build and push
