@@ -1,42 +1,42 @@
-# Erase una vez 2
+# Once upon a time 2
 
-Aplicación Golang utilizada en los ejercicios del libro [Érase una vez Kubernetes](https://leanpub.com/erase-una-vez-kubernetes).
+Golang application used in the exercises in the book [Erase una vez Kubernetes](https://leanpub.com/erase-una-vez-kubernetes).
 
-Traducción: [English](README_en.md)
+Translation: [Español](README.md)
 
-## Descripción
+## Description
 
-La código del repositorio se utiliza para realizar ejemplos de comunicación entre dos aplicaciones desplegadas en el cluster: un cliente y un servidor. Ambas aplicaciones han sido compiladas en la misma imagen Docker, pero el comando de inicio es diferente.
+The code is used to do communication examples between two applications deployed in the cluster: a client and a server. Both applications have been compiled on the same Docker image, but the start command is different.
 
-### Características del servidor
+### Server service features
 
-Utilice el comando `server` para iniciar el sistema como servidor web. La aplicación brinda los siguientes puntos de acceso:
+Use the `server` command to start the service as a web server. The application provides the following access points:
 
-|Punto de acceso |Descripción|
+|Access point|Description|
 |-----|-----------|
-|`/echo`| Muestra el mensaje `érase una vez ...` junto con el nombre de la máquina.|
-|`/healthz`| muestra el mensaje OK si el servidor está funcionando correctamente.|
+|`/echo`|Displays the message `'erase una vez ...'` along with the name of the machine.|
+|`/healthz`|Displays the OK message if the server is working properly.|
 
-Todos los puntos de acceso muestran la información en formato JSON.
+All access points print the information in JSON format.
 
-|Variable de entorno|Descripción|Tipo|Valor por defecto|
-|-----|-----------|------|----|
-|`CHARACTER`| Modifica el mensaje de respuesta del servidor.| String | `...` |
-
-### Características del cliente
-
-Utilice el comando `client` para iniciar el sistema como cliente web. La aplicación realiza peticiones hacia el enlace configurado por intervalos de tiempo. Para configurar la aplicación cliente utilice las siguientes variables de entorno:
-
-|Variable de entorno|Descripción|Tipo|Valor por defecto|
+|Env variable|Description|Type|Default|
 |-----|-----------|------|---|
-|`SLEEP_TIME`| Intervalo de tiempo entre peticiones. Es una cadena. | String | `1s` |
-|`SERVER_URL`| Dirección web donde serán realizadas las peticiones. Ejemplo: `http://ejemplo.com`.| String | `""` |
-|`ENDPOINT`| Punto de acceso del servidor web.| String | `""` |
+|`CHARACTER`| String added at the end of the message.| String | `"..."` |
 
-## Funcionamiento en una máquina
+### Client service features
+
+Use the `client` command to start the system as a client service. The application makes requests towards the configured link by time intervals. To configure the client application use the following environment variables:
+
+|Env variable|Description|Type|Default|
+|-----|-----------|------|---|
+|`SLEEP_TIME`| Time interval between requests.| String | `"1s"` |
+|`SERVER_URL`| URL used to make the requests. e.g: `http://example.com`.| String | `""` |
+|`ENDPOINT`| URL path used to make the request.| String |  `""` |
+
+## App behavior at localhost
 
 ```bash
-# iniciar servidor web
+# starting web server
 docker container run --rm \
   --name server \
   --entrypoint server \
@@ -64,7 +64,7 @@ curl http://localhost:8000/healthz
 ```
 
 ```bash
-# obtener el ip del servidor
+# get server ip
 docker container inspect \
   --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
   server
@@ -73,7 +73,7 @@ docker container inspect \
 ```
 
 ```bash
-# iniciar servidor web
+# starting web server
 docker container run --rm \
   --name client \
   --entrypoint client \
@@ -84,7 +84,7 @@ docker container run --rm \
 ```
 
 ```bash
-# consultar los logs del cliente
+# getting logs from client app
 docker container logs client
 {
   "hostname": "9e65a5deb2f7",
@@ -96,7 +96,7 @@ docker container logs client
 }
 ```
 
-## Funcionamiento en un cluster de Kubernetes
+## App behavior at Kubernetes cluster
 
 ```bash
 kubectl apply -f kubernetes/
