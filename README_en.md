@@ -42,7 +42,7 @@ docker container run --rm \
   --entrypoint server \
   -p 8000:8000 \
   --detach \
-  mmorejon/erase-una-vez-2:0.2.0
+  ghcr.io/mmorejon/erase-una-vez-2:v0.3.0
 
 2020/01/20 23:02:24 Servidor iniciado
 ```
@@ -80,7 +80,7 @@ docker container run --rm \
   --detach \
   --env SERVER_URL="http://172.17.0.2:8000" \
   --env ENDPOINT="/echo" \
-  mmorejon/erase-una-vez-2:0.2.0
+  ghcr.io/mmorejon/erase-una-vez-2:v0.3.0
 ```
 
 ```bash
