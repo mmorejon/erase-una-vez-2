@@ -24,3 +24,4 @@ spec:
               value: http://server:8000
             - name: ENDPOINT
               value: /echo
+          resources: {}
