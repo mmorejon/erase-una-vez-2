@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "client",
+        "type": "go",
+        "request": "launch",
+        "mode": "debug",
+        "program": "${workspaceFolder}/cmd/client",
+        "args": ["-server-url", "http://localhost:8080", "-endpoint", "/api/v1/health"]
+      }
+    ]
+  }

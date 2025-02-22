@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"log"
+	"io"
 	"os"
 	"time"
 
@@ -29,24 +28,27 @@ func main() {
 	endpoint := os.Getenv("ENDPOINT")
 
 	for {
+		// Sleep time
+		sleepTimeDuration, _ := time.ParseDuration(sleepTime)
+		time.Sleep(sleepTimeDuration)
+
+		// Get the endpoint
 		accessPoint := fmt.Sprint(serverURL, endpoint)
 		r, err := client.Get(accessPoint)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Printf("Error al acceder a %s\n", accessPoint)
+			continue
 		}
 
 		// Read the response body
-		defer r.Body.Close()
-		body, err := ioutil.ReadAll(r.Body)
+		body, err := io.ReadAll(r.Body)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Printf("Error al leer la respuesta de %s\n", accessPoint)
+			time.Sleep(sleepTimeDuration)
+			continue
 		}
 
 		// Print the response body to stdout
 		fmt.Printf("%s\n", body)
-
-		// Sleep
-		sleepTimeDuration, _ := time.ParseDuration(sleepTime)
-		time.Sleep(sleepTimeDuration)
 	}
 }
