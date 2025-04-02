@@ -11,7 +11,7 @@ import (
 
 var (
 	sleepTime string = "1s"
-	serverURL string = "http://localhost:8000"
+	endpoint string = "http://localhost:8000/echo"
 )
 
 func main() {
@@ -21,11 +21,9 @@ func main() {
 		sleepTime = os.Getenv("SLEEP_TIME")
 	}
 
-	if len(os.Getenv("SERVER_URL")) != 0 {
-		serverURL = os.Getenv("SERVER_URL")
+	if len(os.Getenv("ENDPOINT")) != 0 {
+		endpoint = os.Getenv("ENDPOINT")
 	}
-
-	endpoint := os.Getenv("ENDPOINT")
 
 	for {
 		// Sleep time
@@ -33,17 +31,16 @@ func main() {
 		time.Sleep(sleepTimeDuration)
 
 		// Get the endpoint
-		accessPoint := fmt.Sprint(serverURL, endpoint)
-		r, err := client.Get(accessPoint)
+		r, err := client.Get(endpoint)
 		if err != nil {
-			fmt.Printf("Error al acceder a %s\n", accessPoint)
+			fmt.Printf("Error al acceder a %s\n", endpoint)
 			continue
 		}
 
 		// Read the response body
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
-			fmt.Printf("Error al leer la respuesta de %s\n", accessPoint)
+			fmt.Printf("Error al leer la respuesta de %s\n", endpoint)
 			time.Sleep(sleepTimeDuration)
 			continue
 		}
