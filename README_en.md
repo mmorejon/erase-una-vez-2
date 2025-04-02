@@ -30,7 +30,6 @@ Use the `client` command to start the system as a client service. The applicatio
 |Env variable|Description|Type|Default|
 |-----|-----------|------|---|
 |`SLEEP_TIME`| Time interval between requests.| String | `"1s"` |
-|`SERVER_URL`| URL used to make the requests. e.g: `http://example.com`.| String | `""` |
 |`ENDPOINT`| URL path used to make the request.| String |  `""` |
 
 ## App behavior at localhost
@@ -42,7 +41,7 @@ docker container run --rm \
   --entrypoint server \
   -p 8000:8000 \
   --detach \
-  ghcr.io/mmorejon/erase-una-vez-2:v0.3.2
+  ghcr.io/mmorejon/erase-una-vez-2:v0.4.0
 
 2020/01/20 23:02:24 Servidor iniciado
 ```
@@ -78,9 +77,8 @@ docker container run --rm \
   --name client \
   --entrypoint client \
   --detach \
-  --env SERVER_URL="http://172.17.0.2:8000" \
-  --env ENDPOINT="/echo" \
-  ghcr.io/mmorejon/erase-una-vez-2:v0.3.2
+  --env ENDPOINT="http://172.17.0.2:8000/echo" \
+  ghcr.io/mmorejon/erase-una-vez-2:v0.4.0
 ```
 
 ```bash

@@ -30,7 +30,6 @@ Utilice el comando `client` para iniciar el sistema como cliente web. La aplicac
 |Variable de entorno|Descripción|Tipo|Valor por defecto|
 |-----|-----------|------|---|
 |`SLEEP_TIME`| Intervalo de tiempo entre peticiones. Es una cadena. | String | `1s` |
-|`SERVER_URL`| Dirección web donde serán realizadas las peticiones. Ejemplo: `http://ejemplo.com`.| String | `""` |
 |`ENDPOINT`| Punto de acceso del servidor web.| String | `""` |
 
 ## Funcionamiento en una máquina
@@ -42,7 +41,7 @@ docker container run --rm \
   --entrypoint server \
   -p 8000:8000 \
   --detach \
-  ghcr.io/mmorejon/erase-una-vez-2:v0.3.2
+  ghcr.io/mmorejon/erase-una-vez-2:v0.4.0
 
 2020/01/20 23:02:24 Servidor iniciado
 ```
@@ -78,9 +77,8 @@ docker container run --rm \
   --name client \
   --entrypoint client \
   --detach \
-  --env SERVER_URL="http://172.17.0.2:8000" \
-  --env ENDPOINT="/echo" \
-  ghcr.io/mmorejon/erase-una-vez-2:v0.3.2
+  --env ENDPOINT="http://172.17.0.2:8000/echo" \
+  ghcr.io/mmorejon/erase-una-vez-2:v0.4.0
 ```
 
 ```bash
