@@ -1,5 +1,5 @@
 # golang alpine 1.13.5-alpine
-FROM golang:1.24.0-alpine AS builder
+FROM golang:1.24.1-alpine AS builder
 # Create appuser.
 RUN adduser -D -g '' elf
 # Create workspace
