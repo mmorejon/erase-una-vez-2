@@ -6,8 +6,11 @@
         "type": "go",
         "request": "launch",
         "mode": "debug",
-        "program": "${workspaceFolder}/cmd/client",
-        "args": ["-server-url", "http://localhost:8080", "-endpoint", "/api/v1/health"]
+        "program": "${workspaceFolder}/cmd/client/client.go",
+        "args": [],
+        "env": {
+          "HTTP_HEADERS": "X-Request-Id:1234567890"
+        }
       }
     ]
   }
