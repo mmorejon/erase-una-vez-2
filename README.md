@@ -2,7 +2,7 @@
 
 Aplicación Golang utilizada en los ejercicios del libro [Érase una vez Kubernetes](https://leanpub.com/erase-una-vez-kubernetes).
 
-Traducción: [English](README_en.md)
+Translation: [English](README_en.md)
 
 ## Descripción
 

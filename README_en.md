@@ -2,7 +2,7 @@
 
 Golang application used in the exercises in the book [Erase una vez Kubernetes](https://leanpub.com/erase-una-vez-kubernetes).
 
-Translation: [Español](README.md)
+Traducción: [Español](README.md)
 
 ## Description
 
