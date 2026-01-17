@@ -4,7 +4,7 @@
 
 <div align="center">
 
-<img src="./assets/book-cover.jpg" alt="Once Upon a Time Kubernetes Book Cover" width="300"/>
+<img src="https://github.com/mmorejon/once-upon-a-time-k8s/blob/main/assets/book-cover.jpg" alt="Once Upon a Time Kubernetes Book Cover" width="300"/>
 
 This repository is a practical example created for the book **"Once Upon a Time Kubernetes"**.
 

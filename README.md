@@ -4,7 +4,7 @@
 
 <div align="center">
 
-<img src="./assets/book-cover.jpg" alt="Portada Libro Érase una vez Kubernetes" width="300"/>
+<img src="https://github.com/mmorejon/erase-una-vez-k8s/blob/main/assets/book-cover.jpg" alt="Portada Libro Érase una vez Kubernetes" width="300"/>
 
 Aplicación Golang utilizada en los ejercicios del libro Érase una vez Kubernetes.
 
@@ -19,7 +19,7 @@ Aplicación Golang utilizada en los ejercicios del libro Érase una vez Kubernet
 
 ## Descripción
 
-La código del repositorio se utiliza para realizar ejemplos de comunicación entre dos aplicaciones desplegadas en el cluster: un cliente y un servidor. Ambas aplicaciones han sido compiladas en la misma imagen Docker, pero el comando de inicio es diferente.
+La código del repositorio se utiliza para realizar ejemplos de comunicación entre dos aplicaciones desplegadas en el clúster: un cliente y un servidor. Ambas aplicaciones han sido compiladas en la misma imagen Docker, pero el comando de inicio es diferente.
 
 ### Características del servidor
 
